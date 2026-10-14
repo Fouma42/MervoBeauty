@@ -8,7 +8,7 @@
 
     <meta name="description" content="Ihre Beschreibung der Website">
 
-    <title>Mein Studio | Ihre Website</title>
+    <title>Mervobeauty | Für dein Strahlen</title>
 
     <!-- Eigene CSS-Datei -->
     <link rel="stylesheet" href="styles.css">
@@ -31,9 +31,15 @@
                 MEIN LOGO
             </a>
 
+            <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false"
+                aria-controls="main-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <!-- Navigation -->
-            <nav class="navigation">
+            <nav class="navigation" id="main-navigation">
 
                 <a href="#start">Home</a>
 
@@ -125,7 +131,7 @@
 
                     <div class="about-image">
 
-                        <img src="bilder/MervoBeauty.jpeg" alt="Beispielbild über mich">
+                        <img src="bilder/Mervo.jpg" alt="Beispielbild über mich">
 
                     </div>
 
@@ -215,12 +221,15 @@
                             </p>
 
                             <h3>
-                                Browlamination
+                                Brow Lamination – perfekt geformte Augenbrauen
                             </h3>
 
                             <p>
-                                Kurze Beschreibung deiner
-                                Behandlung oder deines Angebots.
+                                Bei einer Brow Lamination, auch Augenbrauenlifting genannt, werden die natürlichen
+                                Augenbrauenhärchen mithilfe spezieller Lotionen sanft in die gewünschte Form gebracht
+                                und fixiert. Dadurch lassen sich die Härchen gezielt ausrichten, widerspenstige Brauen
+                                bändigen und ein volleres, harmonisches Gesamtbild kreieren – für perfekt gestylte Brows
+                                mit natürlichem Ausdruck.
                             </p>
 
                             <a href="#kontakt" class="text-link">
@@ -351,7 +360,7 @@
 
         <section class="image-banner">
 
-            <img src="bilder/beispielbild-banner.jpg" alt="Beispielbild">
+            <img src="bilder/MervoBeauty.jpeg" alt="Beispielbild">
 
             <div class="image-banner-content">
 
@@ -414,7 +423,9 @@
 
                         <video controls poster="bilder/beispielbild-video.jpg">
 
-                            <source src="videos/beispiel-video.mp4" type="video/mp4">
+                            <source
+                                src="bilder/Ein Tag mit einer PMU-Artistin ✨Von Beratung bis zum finalen Look.Echte Haut. Echte Ergebnisse.V.mp4"
+                                type="video/mp4">
 
                             Dein Browser unterstützt
                             dieses Video nicht.
@@ -445,7 +456,7 @@
 
                     <div class="academy-image">
 
-                        <img src="bilder/beispielbild-academy.jpg" alt="Beispielbild Academy">
+                        <img src="bilder/MervoAugenGeschlossen.png" alt="Beispielbild Academy">
 
                     </div>
 
@@ -710,13 +721,10 @@
                     Folge mir auf Instagram
                 </h2>
 
-                <p>
-                    Hier kannst du später deine Social-Media-
-                    Verlinkungen und weitere Bilder einbauen.
-                </p>
-
-                <a href="#" class="button">
-                    Instagram besuchen
+                <a class="instagram-link" href="https://www.instagram.com/MervoBeauty" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="">
+                    <span>Follow me</span>
                 </a>
 
             </div>
@@ -754,7 +762,13 @@
 
                         <p>
                             Schreibe mir gerne oder
-                            ruf mich direkt an.
+                            Buche direkt einen.
+                        </p>
+                        <p class="booking-link">
+                            <a class="button" href="https://www.planity.com/de-DE/mervo-beauty-71334-waiblingen"
+                                target="_blank" rel="noopener noreferrer">
+                                Jetzt Termin online buchen
+                            </a>
                         </p>
 
 
@@ -762,7 +776,7 @@
 
                             <p>
                                 <strong>Telefon</strong><br>
-                                01234 / 567890
+                                0172 / 6979094
                             </p>
 
                             <p>
@@ -778,12 +792,16 @@
 
                         </div>
 
+
+
+
+
                     </div>
 
 
                     <div class="contact-image">
 
-                        <img src="bilder/beispielbild-kontakt.jpg" alt="Beispielbild Kontakt">
+                        <img src="bilder/MervoBeauty.jpeg" alt="Beispielbild Kontakt">
 
                     </div>
 
@@ -850,6 +868,26 @@
 
     </footer>
 
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".navigation");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Menü öffnen" : "Menü schließen");
+            navigation.classList.toggle("is-open", !isOpen);
+        });
+
+        navigation.addEventListener("click", (event) => {
+            if (event.target.closest("a")) {
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Menü öffnen");
+                navigation.classList.remove("is-open");
+            }
+        });
+    </script>
 
 </body>
 
